@@ -3,7 +3,9 @@ from chromadb.utils import embedding_functions
 
 class VectorManager:
     def __init__(self, persist_directory="./chroma_db"):
-        self.client = chromadb.PersistentClient(path=persist_directory)
+        # Use EphemeralClient (in-memory) for cloud compatibility (Streamlit Cloud).
+        # PersistentClient requires a writable filesystem which is not available on cloud.
+        self.client = chromadb.EphemeralClient()
         
         # We use the same model as before
         self.embedding_function = embedding_functions.SentenceTransformerEmbeddingFunction(
