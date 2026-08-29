@@ -76,8 +76,8 @@ with st.sidebar:
 
         st.divider()
         if st.button("🗑️ Clear All Papers", use_container_width=True, type="secondary"):
-            # Reset everything by reinitialising vector_manager
-            st.session_state.vector_manager = VectorManager()
+            for paper in available_papers:
+                vector_manager.delete_paper(paper)
             if "messages" in st.session_state:
                 del st.session_state.messages
             st.session_state["analysis_result"] = ""
