@@ -54,22 +54,34 @@ with st.sidebar:
                         st.info(f"{paper_name} is already processed.")
                         
     st.divider()
-    
+
     st.subheader("Current Library")
     available_papers = vector_manager.get_uploaded_papers()
-    
+
     if not available_papers:
         st.write("No papers uploaded yet.")
     else:
         for paper in available_papers:
-            st.write(f"- {paper}")
-        
+            col_name, col_btn = st.columns([3, 1])
+            with col_name:
+                st.write(f"📄 {paper}")
+            with col_btn:
+                if st.button("🗑️", key=f"del_{paper}", help=f"Delete {paper}"):
+                    vector_manager.delete_paper(paper)
+                    # Clear analysis state if it was for this paper
+                    if st.session_state.get("last_analyzed_paper") == paper:
+                        st.session_state["analysis_result"] = ""
+                        st.session_state["last_analyzed_paper"] = ""
+                    st.rerun()
+
         st.divider()
-        if st.button("🗑️ Clear Library", use_container_width=True, type="secondary"):
-            del st.session_state.vector_manager
-            del st.session_state.llm_manager
+        if st.button("🗑️ Clear All Papers", use_container_width=True, type="secondary"):
+            # Reset everything by reinitialising vector_manager
+            st.session_state.vector_manager = VectorManager()
             if "messages" in st.session_state:
                 del st.session_state.messages
+            st.session_state["analysis_result"] = ""
+            st.session_state["last_analyzed_paper"] = ""
             st.rerun()
 
 # ==========================================

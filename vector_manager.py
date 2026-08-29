@@ -50,6 +50,15 @@ class VectorManager:
                 papers.add(meta["paper_name"])
         return sorted(list(papers))
 
+    def delete_paper(self, paper_name):
+        """Deletes all chunks belonging to a specific paper from the collection."""
+        results = self.collection.get(
+            where={"paper_name": paper_name},
+            include=["metadatas"]
+        )
+        if results and results["ids"]:
+            self.collection.delete(ids=results["ids"])
+
     def _count_paper_chunks(self, paper_name):
         """Returns the number of chunks stored for a specific paper."""
         results = self.collection.get(
