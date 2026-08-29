@@ -63,6 +63,14 @@ with st.sidebar:
     else:
         for paper in available_papers:
             st.write(f"- {paper}")
+        
+        st.divider()
+        if st.button("🗑️ Clear Library", use_container_width=True, type="secondary"):
+            del st.session_state.vector_manager
+            del st.session_state.llm_manager
+            if "messages" in st.session_state:
+                del st.session_state.messages
+            st.rerun()
 
 # ==========================================
 # 3. Main Body Setup
