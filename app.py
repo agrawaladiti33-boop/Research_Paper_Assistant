@@ -84,6 +84,17 @@ with st.sidebar:
             st.session_state["last_analyzed_paper"] = ""
             st.rerun()
 
+    st.divider()
+    st.markdown(
+        """
+        <div style='text-align: center; padding: 8px 0;'>
+            <p style='margin:0; font-size:13px; font-weight:600; color:#e0e0e0;'>👩‍💻 Aditi Agrawal</p>
+            <p style='margin:4px 0 0; font-size:11px; color:#90caf9;'>Inderprastha Engineering College</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
 # ==========================================
 # 3. Main Body Setup
 # ==========================================
