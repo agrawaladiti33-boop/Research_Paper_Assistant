@@ -4,10 +4,10 @@ An AI-powered research paper assistant built with **Streamlit**, **ChromaDB**, *
 
 ---
 
-## 🎥 Demo Video
+## 📹 Demo Video
 
-See this video for better understanding:
-🎥 **[Watch the Demo Video](demo_video.mp4)**
+Watch the 3-minute application walkthrough:
+👉 [Click Here to Watch the Demo Video](demo_video.mp4)
 
 ---
 
