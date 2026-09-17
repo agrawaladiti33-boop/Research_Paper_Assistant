@@ -4,6 +4,15 @@ An AI-powered research paper assistant built with **Streamlit**, **ChromaDB**, *
 
 ---
 
+## 🎥 Demo Video
+
+See this video for better understanding:
+<video src="demo_video.mp4" controls="controls" style="max-width: 100%;">
+  Your browser does not support the video tag. You can <a href="demo_video.mp4">download the video here</a>.
+</video>
+
+---
+
 ## ✨ Features
 
 - 📤 **Multi-Paper Upload** — Upload and process multiple research PDFs at once
